@@ -1,4 +1,5 @@
 #minecraft alpha and beta server launcher
+import wget
 select=int("1")
 def stillaive():
 	import time
@@ -60,25 +61,37 @@ def 无效选择():
 	return
 def mcsevernogui(jarname:str,m1:int,m2:int):
 	import os
-	os.system("cls")
-	os.system("java -Xmx"+str(m1)+"M -Xms"+str(m2)+"M -jar " + jarname + " nogui")
-	os.system("pause")
+	dirpath= os.path.dirname(os.path.abspath(__file__))
+	path = os.path.join(dirpath, jarname)
+	os.path.exists(jarname)
+	if not os.path.exists(jarname):
+		wget.download("https://github.com/offmn-sv-cheats-1/OFFMN-s-Miscellaneous-Repository/blob/main/" + jarname, path)
+		os.system("cls")
+		os.system("java -Xmx"+str(m1)+"M -Xms"+str(m2)+"M -jar " + jarname + " nogui")
+		os.system("pause")
+	else:
+		os.system("cls")
+		os.system("java -Xmx"+str(m1)+"M -Xms"+str(m2)+"M -jar " + jarname + " nogui")
+		os.system("pause")
 def mcsever(jarname:str,m1:int,m2:int):
 	import os
-	os.system("cls")
-	os.system("java -Xmx"+str(m1)+"M -Xms"+str(m2)+"M -jar " + jarname)
-	os.system("pause")
+	dirpath= os.path.dirname(os.path.abspath(__file__))
+	path = os.path.join(dirpath, jarname)
+	os.path.exists(jarname)
+	if not os.path.exists(jarname):
+		wget.download("https://github.com/offmn-sv-cheats-1/OFFMN-s-Miscellaneous-Repository/blob/main/" + jarname, path)
+		os.system("cls")
+		os.system("java -Xmx"+str(m1)+"M -Xms"+str(m2)+"M -jar " + jarname)
+		os.system("pause")
+	else:
+		os.system("cls")
+		os.system("java -Xmx"+str(m1)+"M -Xms"+str(m2)+"M -jar " + jarname)
+		os.system("pause")
 def installjava(version:str):
 	import os
+	import webbrowser
 	if version == "8":
-		os.system("java -version")
-		os.system("java8.exe /s")
-	elif version == "17":
-		os.system("java -version")
-		os.system("java17.exe /s")
-	elif version == "21":
-		os.system("java -version")
-		os.system("java21.exe /s")
+		webbrowser.open("https://1drv.ms/u/c/0b6198fc22ae2330/EY09U1Q-ryZBpM00iwBAwHEBP5HQQDhsiHx5tRGgBnhuGQ")
 	else:
 		print("Invalid Java version specified.")
 		return
@@ -174,7 +187,7 @@ elif select == 4:
 elif select == 5:
 	exit_launcher()
 elif select == 6:
-	installjava(input("请输入要安装的Java版本（8[推荐]/17/21）："))
+	installjava()
 elif select == 7:
 	print("此选项目前未完成。")
 	exit_launcher()
