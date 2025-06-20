@@ -1,7 +1,9 @@
 #minecraft alpha and beta server launcher
 import wget
+import datetime
+import webbrowser
 select=int("1")
-def stillaive():
+def still_alive():
 	import time
 	song = """
 _________________________________________________________________
@@ -121,22 +123,22 @@ def exit_launcher():
 	print("Exiting the launcher. Goodbye!")
 	exit()
 #mcsever(inside1,int(input("请输入最大内存分配（单位M）：")),int(input("请输入最小内存分配（单位M）：")))
-print("<------------------------------McSeverLauncher--------------------------------->")
-print("Minecraft Alpha and Beta Server Launcher")
-print("1.[launch] Minecraft Alpha Server")
-print("2.[launch] Minecraft Beta Server")
-print("3.[launch] Minecraft classic Server")
-print("4.[about] About Launcher")
-print("5.[exit] Exit Launcher")
-print("<------------------------------McSeverLauncher--------------------------------->")
-print("6.[install]java")
-print("7.[install](unknown)")
-print("8.[install](unknown)")
-print("<------------------------------McSeverLauncher--------------------------------->")
-print("9.[frp install]（未完成）")
-print("10.[other] Minecraft Release Server launcher")
-print("11.[song] Still Alive")
-print("<------------------------------McSeverLauncher--------------------------------->")
+print(f"<------------------------------McSeverLauncher------------{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}>")
+print(f"Minecraft Alpha and Beta Server Launcher")
+print(f"1.[launch] Minecraft Alpha Server")
+print(f"2.[launch] Minecraft Beta Server")
+print(f"3.[launch] Minecraft classic Server")
+print(f"4.[other] Minecraft Release Server launcher")
+print(f"5.[about] About Launcher")
+print(f"6.[exit] Exit Launcher")
+print(f"<------------------------------McSeverLauncher--------------------------------->")
+print(f"7.[install]java")
+print(f"8.[install](unknown)")
+print(f"9.[install](unknown)")
+print(f"<------------------------------McSeverLauncher--------------------------------->")
+print(f"10.[frp install]（未完成）")
+print(f"11.[wiki]minecraft wiki")
+print(f"<------------------------------McSeverLauncher--------------------------------->")
 print("Please select an option (1-11): ", end="")
 select = int(input(":"))
 if select == 1:
@@ -182,15 +184,12 @@ elif select == 3:
 		mcsevernogui(jarname, int(input("请输入最大内存分配（单位M）：")), int(input("请输入最小内存分配（单位M）：")))
 	else:
 		mcsever(jarname, int(input("请输入最大内存分配（单位M）：")), int(input("请输入最小内存分配（单位M）：")))
-elif select == 4:
-	about()
 elif select == 5:
-	exit_launcher()
+	about()
 elif select == 6:
-	installjava()
-elif select == 7:
-	print("此选项目前未完成。")
 	exit_launcher()
+elif select == 7:
+	installjava()
 elif select == 8:
 	print("此选项目前未完成。")
 	exit_launcher()
@@ -198,12 +197,22 @@ elif select == 9:
 	print("此选项目前未完成。")
 	exit_launcher()
 elif select == 10:
+	print("此选项目前未完成。")
+	exit_launcher()
+elif select == 4:
 	import os
 	os.system("cls")
-	jarname = "r1.jar"
+	print("<------------------------------McSeverLauncher--------------------------------->")
+	print("versionselect:1.[r1] | 2.[r2] | 3.[r3] | 4.[r4] | 5.[r5] | 6.[r6]")
+	print("<------------------------------McSeverLauncher--------------------------------->")
+	print("Please select a version (1-6): ", end="")
+	version_select = int(input(":"))
+	jarname = "r"+str(version_select)+".jar"
 	mcsever(jarname, int(input("请输入最大内存分配（单位M）：")), int(input("请输入最小内存分配（单位M）：")))
 elif select == 11:
-	stillaive()
+	webbrowser.open("https://minecraft.wiki/w/Server")
+elif select == "make love":
+	print("not war?")
 else:
 	无效选择()
 	exit_launcher()
