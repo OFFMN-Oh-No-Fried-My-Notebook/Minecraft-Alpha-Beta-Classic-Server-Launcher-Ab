@@ -2,6 +2,8 @@
 import wget
 import datetime
 import webbrowser
+import requests
+import os
 select=int("1")
 def still_alive():
 	import time
@@ -62,42 +64,45 @@ def 无效选择():
 	print("无效选择，请重新输入。")
 	return
 def mcsevernogui(jarname:str,m1:int,m2:int):
+	url = f"https://github.com/offmn-sv-cheats-1/OFFMN-s-Miscellaneous-Repository/releases/download/macseverpack1/{jarname}"
 	import os
 	dirpath= os.path.dirname(os.path.abspath(__file__))
 	path = os.path.join(dirpath, jarname)
-	os.path.exists(jarname)
-	if not os.path.exists(jarname):
-		wget.download("https://github.com/offmn-sv-cheats-1/OFFMN-s-Miscellaneous-Repository/blob/main/" + jarname, path)
+	if not os.path.exists(path):
+		wget.download(url,out=path)
 		os.system("cls")
-		os.system("java -Xmx"+str(m1)+"M -Xms"+str(m2)+"M -jar " + jarname + " nogui")
+		os.system(fr'java -Xmx{m1}M -Xms{m2}M -jar ""{path}"" nogui')
+		os.system("cls")
 		os.system("pause")
 	else:
 		os.system("cls")
-		os.system("java -Xmx"+str(m1)+"M -Xms"+str(m2)+"M -jar " + jarname + " nogui")
+		os.system(fr'java -Xmx{m1}M -Xms{m2}M -jar ""{path}"" nogui')
+		os.system("cls")
 		os.system("pause")
 def mcsever(jarname:str,m1:int,m2:int):
+	url = f"https://github.com/offmn-sv-cheats-1/OFFMN-s-Miscellaneous-Repository/releases/download/macseverpack1/{jarname}"
 	import os
 	dirpath= os.path.dirname(os.path.abspath(__file__))
 	path = os.path.join(dirpath, jarname)
-	os.path.exists(jarname)
-	if not os.path.exists(jarname):
-		wget.download("https://github.com/offmn-sv-cheats-1/OFFMN-s-Miscellaneous-Repository/blob/main/" + jarname, path)
+	if not os.path.exists(path):
+		wget.download(url,out=path)
+		os.system(f"cls")
+		os.system(fr'java -Xmx{m1}M -Xms{m2}M -jar ""{path}""')
 		os.system("cls")
-		os.system("java -Xmx"+str(m1)+"M -Xms"+str(m2)+"M -jar " + jarname)
 		os.system("pause")
 	else:
 		os.system("cls")
-		os.system("java -Xmx"+str(m1)+"M -Xms"+str(m2)+"M -jar " + jarname)
+		os.system(fr'java -Xmx{m1}M -Xms{m2}M -jar ""{path}""')
+		os.system("cls")
 		os.system("pause")
 def installjava(version:str):
 	import os
-	import webbrowser
 	if version == "8":
-		webbrowser.open("https://1drv.ms/u/c/0b6198fc22ae2330/EY09U1Q-ryZBpM00iwBAwHEBP5HQQDhsiHx5tRGgBnhuGQ")
-	else:
-		print("Invalid Java version specified.")
-		return
-	print(f"Java {version} installed successfully.")
+		url = "	https://repo.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-windows-x64.exe"
+		file_name = "jdk-8u202-windows-x64.exe"
+		wget.download(url, out=file_name)
+		os.system(f"{file_name} /s")
+		print("Java 8 installed successfully.")
 
 def installfrp(version:str):
 	import os
@@ -114,6 +119,7 @@ def about():
 	print("It allows you to launch Minecraft servers with specified memory allocation.")
 	print("You can also install different versions of Java and set up FRP for internal network penetration.")
 	print("Version: 1.0")
+
 def exit_launcher():
 	import os
 	import time
@@ -128,7 +134,7 @@ print(f"Minecraft Alpha and Beta Server Launcher")
 print(f"1.[launch] Minecraft Alpha Server")
 print(f"2.[launch] Minecraft Beta Server")
 print(f"3.[launch] Minecraft classic Server")
-print(f"4.[other] Minecraft Release Server launcher")
+print(f"4.[launch] Minecraft Release Server launcher")
 print(f"5.[about] About Launcher")
 print(f"6.[exit] Exit Launcher")
 print(f"<------------------------------McSeverLauncher--------------------------------->")
@@ -189,7 +195,7 @@ elif select == 5:
 elif select == 6:
 	exit_launcher()
 elif select == 7:
-	installjava()
+	installjava("8")
 elif select == 8:
 	print("此选项目前未完成。")
 	exit_launcher()
@@ -203,7 +209,7 @@ elif select == 4:
 	import os
 	os.system("cls")
 	print("<------------------------------McSeverLauncher--------------------------------->")
-	print("versionselect:1.[r1] | 2.[r2] | 3.[r3] | 4.[r4] | 5.[r5] | 6.[r6]")
+	print("versionselect:1.[r1] | 2.[r2] | 3.[r3] | 4.[r4] | 5.[r5] | 6.[r6] | 7.[r7] | 8.[r8] | 9.[r9] ")
 	print("<------------------------------McSeverLauncher--------------------------------->")
 	print("Please select a version (1-6): ", end="")
 	version_select = int(input(":"))
