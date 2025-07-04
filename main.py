@@ -46,71 +46,88 @@ else:
     print("Unsupported operating system. Please run this script on Windows or Linux.")
     sys.exit(1)
 #main
-menu()
-set=int(input("Please select an option (1-11): "))
-if set==1:
-    select(1)
-elif set==2:
-    select(2)
-elif set==3:
-    select(3)
-elif set==4:
-    select(4)
-elif set==5:
-    about()
-elif set==6:
-    exit_launcher()
-elif set==7:
-    if windows_or_linux=="win32":
-        installjava("8")
-    elif windows_or_linux=="linux":
+while True:
+    menu()
+    set=int(input("Please select an option (1-11): "))
+    if set==1:
+        try:
+            select(1)
+        except Exception as e:
+            print(f"Error occurred while selecting version: {e}")
+    elif set==2:
+        try:
+            select(2)
+        except Exception as e:
+            print(f"Error occurred while selecting version: {e}")
+    elif set==3:
+        try:
+            select(3)
+        except Exception as e:
+            print(f"Error occurred while selecting version: {e}")
+    elif set==4:
+        try:
+            select(4)
+        except Exception as e:
+            print(f"Error occurred while selecting version: {e}")
+    elif set==5:
+       about()
+    elif set==6:
+        exit_launcher()
+    elif set==7:
+        try:
+            if windows_or_linux=="win32":
+                installjava("8")
+            elif windows_or_linux=="linux":
+                installjava("8")
+        except Exception as e:
+            print(f"Error occurred while installing Java: {e}")
+    elif set==8:
         print("null")
-    exit_launcher()
-elif set==8:
-    print("null")
-    exit_launcher()
-elif set==9:
-    print("null")
-    exit_launcher()
-elif set==10:
-    print("null")
-    exit_launcher()
-elif set==11:
-    webbrowser.open("https://minecraft.wiki/w/Server")
-    exit_launcher()
-elif set==12:
-    import os
-    if not os.path.exists("server.properties"):
-        print("server.properties file not found. Creating a new one.")
-        settc=input("Do you want to create server.properties? (y/n): ")
-        if settc.lower() == "y":
-            with open("server.properties", "w") as f:
-                f.write("# Minecraft Server Properties\n")
-                f.write("motd=Welcome to the Minecraft Server!\n")
-                f.write("max-players=20\n")
-                f.write("level-name=world\n")
-                f.write("gamemode=survival\n")
-                f.write("difficulty=normal\n")
-                f.write("server-port=25565\n")
-                f.write("white-list=false\n")
-                f.write("spawn-protection=16\n")
-                f.write("enable-command-block=false\n")
-                f.write("view-distance=10\n")
-                f.write("simulation-distance=10\n")
-                f.write("max-build-height=256\n")
-                f.write("spawn-npcs=true\n")
+        exit_launcher()
+    elif set==9:
+        print("null")
+        exit_launcher()
+    elif set==10:
+        print("null")
+        exit_launcher()
+    elif set==11:
+        webbrowser.open("https://minecraft.wiki/w/Server")
+        exit_launcher()
+    elif set==12:
+        import os
+        if not os.path.exists("server.properties"):
+            print("server.properties file not found. Creating a new one.")
+            settc=input("Do you want to create server.properties? (y/n): ")
+            if settc.lower() == "y":
+                with open("server.properties", "w") as f:
+                    f.write("# Minecraft Server Properties\n")
+                    f.write("motd=Welcome to the Minecraft Server!\n")
+                    f.write("max-players=20\n")
+                    f.write("level-name=world\n")
+                    f.write("gamemode=survival\n")
+                    f.write("difficulty=normal\n")
+                    f.write("server-port=25565\n")
+                    f.write("white-list=false\n")
+                    f.write("spawn-protection=16\n")
+                    f.write("enable-command-block=false\n")
+                    f.write("view-distance=10\n")
+                    f.write("simulation-distance=10\n")
+                    f.write("max-build-height=256\n")
+                    f.write("spawn-npcs=true\n")
+                editor_server_properties_menu()
+                edit_server_properties(input("Please select an option (1-13): "))
+                view_server_properties()
+                exit_launcher()
+            else:
+                exit_launcher()
+        else:
+            os.system("cls" if windows_or_linux == "win32" else "clear")
             editor_server_properties_menu()
             edit_server_properties(input("Please select an option (1-13): "))
             view_server_properties()
             exit_launcher()
-        else:
-            exit_launcher()
     else:
-        os.system("cls" if windows_or_linux == "win32" else "clear")
-        editor_server_properties_menu()
-        edit_server_properties(input("Please select an option (1-13): "))
-        view_server_properties()
+        import time
+        print("error: Invalid option selected.")
+        time.sleep(1)
         exit_launcher()
-else:
-    still_alive()
-    exit_launcher()
