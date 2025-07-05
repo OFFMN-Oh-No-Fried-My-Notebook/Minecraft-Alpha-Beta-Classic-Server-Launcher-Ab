@@ -3,7 +3,7 @@ import datetime
 import webbrowser
 import requests
 import os
-select=int("1")
+#select=int("1")
 def still_alive():
 	import time
 	song = """
@@ -97,7 +97,7 @@ def mcsever(jarname:str,m1:int,m2:int):
 def installjava(version:str):
 	import os
 	if version == "8":
-		url = "	https://repo.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-windows-x64.exe"
+		url = "https://repo.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-windows-x64.exe"
 		file_name = "jdk-8u202-windows-x64.exe"
 		wget.download(url, out=file_name)
 		os.system(f"{file_name} /s")
